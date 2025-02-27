@@ -1,0 +1,182 @@
+/* Fondo y estilos globales */
+body {
+    background-color: #6a4c8c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* ===============================
+     Estilos del Sobre
+     =============================== */
+  .envelope {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  /* Solapa: degradado rosa suave con el borde redondeado */
+  .envelope .flap {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top center;
+    transition: transform 0.8s ease;
+    z-index: 2;
+  }
+  
+  /* Cuerpo del sobre: suavizamos el borde inferior, usando un degradado para un efecto más fluido */
+  .envelope .body {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  
+  /* Contenedor de decoración: triángulo superior */
+  .side-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* Triángulo superior ajustado (más pequeño y alineado correctamente) */
+  .triangle.top {
+    position: absolute;
+    left: 50%;
+    top: -5px; /* Ajustado para que esté alineado justo en la base */
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent; /* Base más pequeña */
+    border-right: 25px solid transparent; /* Base más pequeña */
+    border-bottom: 15px solid #ff69b4; /* Altura más pequeña */
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  /* Animación del sobre cuando se abre */
+  .envelope.open .flap {
+    transform: rotateX(-180deg);
+  }
+  
+  /* ===============================
+     Estilos de la Carta
+     =============================== */
+  .carta {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    background: #fff;
+    padding: 20px 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+  
+  .carta.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .carta h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .carta p {
+    color: #555;
+  }
+  
+  /* ===============================
+     Estilos de los Botones
+     =============================== */
+  .botones {
+    margin-top: 20px;
+  }
+  
+  .boton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-si {
+    background: #27ae60;
+  }
+  
+  .btn-si:hover {
+    background: #219150;
+  }
+  
+  .btn-no {
+    background: #c0392b;
+  }
+  
+  .btn-no:hover {
+    background: #a83225;
+  }
+  
+  /* ===============================
+     Sección de Aceptación
+     =============================== */
+  .aceptacion {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .aceptacion h2 {
+    color: #27ae60;
+  }
+  
+  /* Animación de corazón pulsante para la aceptación */
+  .heart-animation {
+    width: 50px;
+    height: 50px;
+    margin: 20px auto 0;
+    background: #e74c3c;
+    clip-path: polygon(50% 0%, 61% 18%, 80% 18%, 100% 38%, 100% 62%, 80% 82%, 50% 100%, 20% 82%, 0 62%, 0 38%, 20% 18%, 39% 18%);
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
